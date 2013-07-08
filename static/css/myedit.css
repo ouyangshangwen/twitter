@@ -1,0 +1,19 @@
+#left_column .myprofile{
+
+	clear: none;
+   position: relative;
+  margin: 0px 0px 10px;
+  background-color: rgb(255, 255, 255);
+  border-bottom: 2px solid rgb(187, 187, 187);
+  border-radius: 6px 6px 6px 6px;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.46);
+  border-bottom: 0px none;
+
+	
+	
+}
+.myavatar{
+	position:relative;
+	width:180px;
+	height:180px;
+}

@@ -1,0 +1,25 @@
+{%for item in items%}
+<li id={{item.good_id}}>
+<a class="delete" title="删除" data-good_id={{item.good_id}}><img src="/images/delete.png"/></a>
+<div style="margin:10px 0px ;">
+
+<img src={{item.url}} width="300"/>
+<div>
+<div style="margin:3px 0px ;"><h1>{{item.title}}</h1>
+<p>{{item.description}}</p>
+</div>
+<div class='tags' style="word-wrap:break-word;border:none;">
+<table>
+<tr>
+<th>标签：</th>
+{%for tag in item.tags%}
+<td ><a style="color:blue;cursor:pointer;" class="search_tags">{{tag}}</a>##</td>
+{%endfor%}
+</tr>
+</table>
+
+</div>
+
+</div>
+</li>
+{%endfor%}

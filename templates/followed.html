@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% block link %}
+    <link rel="stylesheet" type="text/css" href="/css/mypage.css" />
+    <link rel="stylesheet" type="text/css" href="/css/text.css" />
+    <link rel="stylesheet" type="text/css" href="/css/settings.css" />
+    <link rel="stylesheet" type="text/css" href="/css/friends.css" />
+    <script type="text/javascript">
+        $(function(){
+
+                  $.ajax({type:"POST",
+                  url:'/followed/',
+
+                  dataType:"json",
+                  success:function(data)
+                  {
+
+                   $("#friendlist").append(data.html);
+
+                  
+                  },
+                  contentType : 'application/json',
+               });
+          
+        });
+    </script>
+            <script type="text/javascript">
+    $(function(){
+
+          $("a[title='删除跟随']").live('click',function(){
+            
+             followedid=$(this).data("followedid");
+
+             $.ajax({
+             type:'POST',
+             url:'/deletefollowed/',
+             dataType:"json",
+             data:{'followedid':followedid},
+             success:function(data)
+             {
+				$('#'+followedid).hide();
+             },
+             contentType : 'application/json',
+         });
+         });
+    });
+    
+     </script>
+   
+          <script type="text/javascript">
+         $(function(){
+
+          $("a[title='添加关注']").live('click',function(){
+
+             addfriendid=$(this).data("followedid");
+			
+             $.ajax({
+             type:'POST',
+             url:'/addfollow/',
+             dataType:"json",
+             data:{'addfriendid':addfriendid},
+             success:function(data)
+             {
+              alert(data.html)
+             },
+             contentType : 'application/json',
+         });
+         });
+    });
+    
+     </script>
+{% endblock %}
+{% block body%}
+<div id="nav">
+
+</div>
+<div id="container">
+
+<div id="header">
+<h1 id="logo">
+<a href="/"></a>
+</h1>
+ <div id="home_tools">
+
+       <div class="search_form_row">
+         <form id="search_form"  action="/" method="get">
+
+         <input  type="text" placeholder="搜索标签"></input>
+   
+         
+         </form>
+      <button class="search_icon" type="submit"></tutton>
+        </div>
+<a class="button" style="background-image:url(/images/home_button.png);"
+href="/homepage/" title="主页"></a>
+<a class="button" style="background-image:url(/images/inbox_button.png);"
+href="/inbox/" title="消息"></a>
+<a class="button" style="background-image:url(/images/goods_button.png);"
+href="/goods/" title="物品"></a>
+<a class="button" style="background-image:url(/images/settings_button.png);"
+href="/settings/" title="设置"></a>
+<a class="button" style="background-image:url(/images/logout_button.png);
+"href="/cancel/" title="注销"></a>
+
+  </div>
+</div>
+
+<div id="friends">
+<h1>跟随者</h1>
+
+<ol id='friendlist' >
+
+
+</ol>
+</div>
+
+
+
+
+
+
+
+
+</div>
+{% endblock %}

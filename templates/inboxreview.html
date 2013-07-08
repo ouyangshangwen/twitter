@@ -1,0 +1,28 @@
+{%for item in items%}
+<li   class="post" id={{item.reviewid}}>
+<div  class="messages" >
+{%if item.flag %}
+<p><a href="/profile/{{item.userid}}" style="color:blue;">{{item.username}}</a>在：{{item.title}}</p>
+<p>评论：{{item.content}}</p>
+<p style="margin-top:5px;">
+<em>7:33</em>
+</p>
+<p style="display:inline-block;">
+ <textarea class="review_box"  id={{item.review_box_id}}></textarea>
+ <button class="btnreply"  data-reviewid={{item.reviewid}}  >回复</button>
+ </p>
+ {%else%}
+ <p><a href="/profile/{{item.userid}}" style="color:blue;">{{item.username}}</a>关注了：{{item.title}}</p>
+<p>请进行邮件回复，邮件地址：{{item.email}}</p>
+<p style="margin-top:5px;">
+<em>7:33</em>
+</p>
+ {%endif%}
+ 
+</div>
+<span class="arrow"></span>
+<div class="avatar_x"><a class="post_avatar"style={{item.url}}
+ title={{item.username}} href="/profile/{{item.userid}}">{{item.usrname}}</a>
+</div>
+</li>
+{%endfor%}

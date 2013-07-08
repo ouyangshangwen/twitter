@@ -1,0 +1,101 @@
+#settings{
+    background:center;
+	position:relative;
+    margin-top:20px;
+	padding:40px;
+	padding-left:100px;
+	width:700px;
+	background-color:#fff;
+	border-radius:12px 12px 12px 12px;
+	height:320px;
+	opacity:0.95;
+}
+#settings h1 {
+
+    font-weight:20px;
+    line-height: 25px;
+    margin-bottom: 2px;
+    font-family:"SimSun","Microsoft Yahei","SimHei";
+    font-size: 20px;
+    border-bottom: 1px solid #E0E0E0;
+
+}
+.account_info{
+	margin-top:20px;
+	margin-left:200px;
+}
+
+
+.table_font{
+  font: bold 14px/1.4 "Helvetica Neue","HelveticaNeue",Helvetica,Arial,sans-seri
+
+}
+.info_forms input, .signup_forms select {
+    position:relative;
+    float:right;
+    background-color: #EBEBEB;
+    border-radius: 6px 6px 6px 6px;
+    border-width: 1px;
+    border-style: solid;
+    text-decoration: none;
+    border-color: rgba(0, 0, 0, 0.65);
+    color: #000000;
+    width: 200px;
+    padding: 11px 0px 10px;
+    display: block;
+    margin: 0px;
+    border: 1px 1px;
+    font: bold 14px/1.4 "Helvetica Neue","HelveticaNeue",Helvetica,Arial,sans-serif;
+
+}
+.forms_submit{
+width: 100px;
+margin: 15px 0px 0px ;
+font-size: 16px;
+display: inline-block;
+border-radius: 6px 6px 6px 6px;
+float: none;
+height: 40px;
+line-height: 34px;
+padding: 0px;
+font-weight: bold;
+border-color: rgba(0, 0, 0, 0.65);
+background:  rgb(87, 145, 187) ; 
+cursor: pointer;
+font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+color: rgb(255, 255, 255);
+text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.32);
+border-width: 1px;
+border-style: solid;
+text-decoration: none;
+box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.6) inset;
+margin-left:100px;
+}
+.input-file {
+cursor:pointer;
+display:inline-block;
+width:100px;
+height:30px;
+line-height:30px;
+background:#ddd;
+text-align:center;
+overflow:hidden;
+position:relative;
+  	background-color: #EBEBEB;
+    border-radius: 3px 3px 3px 3px;
+    font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+    border-width: 1px;
+    border-style: solid;
+}
+.input-file:hover {
+background:#ccc;
+}
+.input-file input {
+opacity:0;
+filter:alpha(opacity=0);
+font-size:100px;
+position:absolute;
+
+top:0;
+right:0;
+}

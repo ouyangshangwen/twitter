@@ -1,0 +1,222 @@
+{% extends "base.html" %}
+{% block link %}
+    <link rel="stylesheet" type="text/css" href="/css/mypage.css" />
+    <link rel="stylesheet" type="text/css" href="/css/text.css" />
+    <link rel="stylesheet" type="text/css" href="/css/settings.css" />
+    <link rel="stylesheet" type="text/css" href="/css/goods.css" />
+    <script type="text/javascript">
+        $(function(){
+  
+                  
+                  $.ajax({type:"POST",
+                  url:'/getgoods/',
+                  dataType:"json",
+                  success:function(data)
+                  {
+                  if(data.flag=="true")
+					{$("#goodslist").append(data.html);}
+				else
+					{alert('您还没有添加物品')}
+                   
+
+                  
+                  },
+                  contentType : 'application/json',
+               });
+ 
+          
+        });
+    </script>
+          <script type="text/javascript">
+    $(function(){
+
+          $(".delete").live('click',function(){
+            
+            goodid=$(this).data("good_id");
+
+             $.ajax({
+             type:'POST',
+             url:'/deletegood/',
+             dataType:"json",
+             data:{'goodid':goodid},
+             success:function(data)
+             {
+				$('#'+goodid).hide();
+				alert(data.html)
+             },
+             contentType : 'application/json',
+         });
+         });
+    });
+    
+     </script>
+<script type="text/javascript">
+
+	$(function(){
+	
+	$('#addgood').click(function(){
+	
+	
+		$(".goodsform").slideToggle()
+		
+	});
+	});
+</script>     
+<script type="text/javascript">
+    $(function(){
+        $('#searchgoods').live('click',function(){
+            var tag=$('#goods_tags').val()
+
+            $.ajax({
+                type:'POST',
+                url:"/searchgoods/",
+                dataType:"json",
+                data:{'tag':tag},
+                success:function(data){ 
+                	$('#goodslist').empty()               	
+                	$('#goodslist').append(data.html)
+                },
+                contentType : 'application/json',
+            });
+        $("#textform").slideUp();
+        })
+       
+    });
+
+
+</script>
+<script type="text/javascript">
+    $(function(){
+        $('.search_tags').live('click',function(){
+            var tag=$(this).text()
+           
+
+            $.ajax({
+                type:'POST',
+                url:"/searchgoods/",
+                dataType:"json",
+                data:{'tag':tag},
+                success:function(data){ 
+                	$('#goodslist').empty()               	
+                	$('#goodslist').append(data.html)
+                },
+                contentType : 'application/json',
+            });
+        $("#textform").slideUp();
+        })
+       
+    });
+
+
+</script>
+<script type="text/javascript">
+    $(function(){
+        $('.btnsendletter').live('click',function(){
+            var goodid=$(this).data('goodid');
+      
+            $.ajax({
+                type:'POST',
+                url:"/attentiongood/",
+                dataType:"json",
+                data:{'goodid':goodid},
+                success:function(data){ 
+					alert(data.message);
+                },
+                contentType : 'application/json',
+            });
+        $("#textform").slideUp();
+        });
+       
+    });
+
+
+</script>
+{% endblock %}
+{% block body%}
+<div id="nav">
+
+</div>
+<div id="container">
+
+<div id="header">
+<h1 id="logo">
+<a href="/"></a>
+</h1>
+ <div id="home_tools">
+
+       <div class="search_form_row">
+         <form id="search_form"  action="/" method="get">
+
+         <input  type="text" placeholder="搜索标签"></input>
+   
+         
+         </form>
+      <button class="search_icon" type="submit"></tutton>
+        </div>
+<a class="button" style="background-image:url(/images/home_button.png);"
+href="/homepage/" title="主页"></a>
+<a class="button" style="background-image:url(/images/inbox_button.png);"
+href="/inbox/" title="消息"></a>
+<a class="button" style="background-image:url(/images/goods_button.png);"
+href="/goods/" title="物品"></a>
+<a class="button" style="background-image:url(/images/settings_button.png);"
+href="/settings/" title="设置"></a>
+<a class="button" style="background-image:url(/images/logout_button.png);
+"href="/cancel/" title="注销"></a>
+
+  </div>
+</div>
+
+<div id="goods">
+<div class="goodsform" style="display:none;"> 
+<div id="goodsform" class="inputgoods" >
+  <form enctype="multipart/form-data"  action="/upgoods/" method="post">
+  <input id="goodstitle"type="text" placeholder="标题" name='goodstitle'></input>
+  <textarea id="goodscontents"wrap="physical" placeholder="描述"name='goodscontents'></textarea>
+  <input id="goodstags" type="text" placeholder="标签#分隔开" name='goodstags'></input>
+   
+  <span class="input-file"><input id="goodsfile" type="file" name="file" data-id={{user.id}}></input>
+  上传物品图片
+  </span>
+  <button type="submit" id="btnsubmit"class="send_submit">发送</button>
+  </form>
+  
+
+</div>
+</div>
+<h1>我的物品
+<button class="btngoods" id="addgood">添加物品</button>
+
+
+
+
+
+
+
+       <div class="search_goods">
+         <form id="search_form"  action="/search" method="get">
+
+         <input  type="text" placeholder="搜索物品" id="goods_tags"></input>
+   
+         
+         </form>
+      <button id="searchgoods" class="btnsearch" type="submit"></tutton>
+      
+
+</div>
+</h1>
+
+<ol id='goodslist' >
+
+</ol>
+</div>
+
+
+
+
+
+
+
+
+</div>
+{% endblock %}

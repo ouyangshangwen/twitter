@@ -1,0 +1,11 @@
+{% for item in items%}
+<li id={{item.followid}}>
+<a class="delete addotherfollow" title="添加关注" href="javascript:void(0)"
+ data-followid={{item.followid}}><img src="/images/add.png"/></a>
+<div style="margin:10px 0px ;">
+<a class="photo" style="{{item.url}};" href="/profile/{{item.userid}}" ></a>
+<div>
+<a style="margin:3px 0px;" href="/profile/{{item.userid}}">{{item.username}}</a>
+
+</li>
+{%endfor%}

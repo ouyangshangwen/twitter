@@ -1,0 +1,80 @@
+.signup_forms {
+    position: fixed;
+    display: block;
+    left:50%;
+    top: 25%;
+    margin: 71px 0px 0px -122px;
+    width: 245px;
+    padding: 0px 0px 60px;
+
+
+}
+.login_container{
+	margin-left:40%;
+	margin-top:100px;
+	width:20%;
+	height:50%;
+}
+.login_forms_submit{
+width: 100%;
+margin: 15px 0px 0px;
+font-size: 16px;
+display: inline-block;
+border-radius: 6px 6px 6px 6px;
+float: none;
+height: 40px;
+line-height: 34px;
+padding: 0px;
+font-weight: bold;
+border-color: rgba(0, 0, 0, 0.65);
+background:  rgb(87, 145, 187) ; 
+     cursor: pointer;
+font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+color: rgb(255, 255, 255);
+text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.32);
+border-width: 1px;
+border-style: solid;
+text-decoration: none;
+box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.6) inset;
+
+}
+.signup_forms_submit.login_btn{
+    padding:0;
+    width:100px;
+	display: block;
+	font-size: 34px;
+	font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+   font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+   text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.32);
+}
+.signup_forms input, .signup_forms select {
+    background-color: #EBEBEB;
+    border-radius: 6px 6px 6px 6px;
+    font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+    border-width: 1px;
+    border-style: solid;
+    text-decoration: none;
+    border-color: rgba(0, 0, 0, 0.65);
+    color: #000000;
+    width: 100%;
+    padding: 11px 0px 10px;
+    display: block;
+    margin: 0px;
+    border: 1px 1px;
+    font: bold 14px/1.4 "Helvetica Neue","HelveticaNeue",Helvetica,Arial,sans-serif;
+
+}
+.forgot_password {
+    display:block;
+    width: 100%;
+    text-align: center;
+    color: #EBEBEB;
+    margin-top:10px;
+    text-decoration:none;
+    opacity: 1;
+    max-height: none;
+    margin: 20px 0px 0px;
+}

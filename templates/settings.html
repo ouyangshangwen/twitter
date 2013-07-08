@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+{% block link %}
+    <link rel="stylesheet" type="text/css" href="/css/mypage.css" />
+    <link rel="stylesheet" type="text/css" href="/css/text.css" />
+    <link rel="stylesheet" type="text/css" href="/css/settings.css" />
+    <script type="text/javascript">   
+             $(function(){
+
+              $("#confirmpwd").blur(function () {
+                if ($(this).val()!=$('#newpwd').val()) 
+                {
+                    $("#tips").text("密码不一致");
+                    $(this).focus();
+                }
+                else
+                {
+                	    $("#tips").text('');
+                }
+           
+           });
+           
+        });
+            
+             $(function(){
+
+              $("#password").blur(function () {
+
+                 $.ajax({type:"POST",
+                  url:'/verifypwd/',
+                  dataType:"json",
+                  data:{'password':$("#password").val()},
+                  success:function(data)
+                  {
+                     if(data=='false')
+                     {
+                     $("#tips").text('密码错误');
+
+                     }
+                     else
+                     {
+                     	$("#tips").text('');
+                     }
+                      
+                   },
+                  contentType : 'application/json',
+                    });           
+           });
+           
+        });
+    
+     </script>
+     <script type="text/javascript">
+    $(function(){
+        $('.forms_submit').live('click',function(){
+        alert('信息修改成功！');
+          
+           
+
+    
+       
+    });
+    });
+
+
+</script>
+{% endblock %}
+{% block body%}
+<div id="nav">
+
+</div>
+<div id="container">
+
+<div id="header">
+<h1 id="logo">
+<a href="/"></a>
+</h1>
+ <div id="home_tools">
+
+       <div class="search_form_row">
+         <form id="search_form"  action="/" method="get">
+
+         <input  type="text" placeholder="搜索标签"></input>
+   
+         
+         </form>
+      <button class="search_icon" type="submit"></tutton>
+        </div>
+<a class="button" style="background-image:url(/images/home_button.png);"
+href="/homepage/" title="主页"></a>
+<a class="button" style="background-image:url(/images/inbox_button.png);"
+href="/inbox/" title="消息"></a>
+<a class="button" style="background-image:url(/images/goods_button.png);"
+href="/goods/" title="物品"></a>
+<a class="button" style="background-image:url(/images/settings_button.png);"
+href="/settings/" title="设置"></a>
+<a class="button" style="background-image:url(/images/logout_button.png);
+"href="/cancel/" title="注销"></a>
+
+  </div>
+</div>
+
+<div id="settings">
+<h1>账户信息</h1>
+<div class="account_info">
+<form method="post" action="/modifydata/" enctype="multipart/form-data">
+<span id="tips" style="color:#fff;color:red;margin-left:60px;"></span>
+<table class="info_forms">
+<tr>
+<th>姓名：</th>
+<td><input type="text" id="username"name="username" value={{user.username}} ></input></td>
+</tr>
+<tr>
+<th>旧密码：</th>
+<td><input type="password" id="password"  name="password"></input></td>
+</tr>
+<th>新密码：</th>
+<td><input type="password" id="newpwd" name="newpwd"></input></td>
+</tr>
+<tr>
+<th>确认：</th>
+<td><input type="password" id="confirmpwd" name="confirmpwd"></input></td>
+</tr>
+<tr>
+<th>学校：</th>
+<td><input type="text" id='school' name="school" value={{user.address}} ></input></td>
+</tr>
+<tr>
+<th>头像：</th>
+<td><span class="input-file ">上传头像<input type='file'  name="file"></input></span></td>
+</tr>
+</table>
+  <input class="forms_submit" type='submit' value='保存'></input>
+</form>
+
+
+
+
+</div>
+
+</div>
+
+
+
+</div>
+
+
+
+
+</div>
+{% endblock %}

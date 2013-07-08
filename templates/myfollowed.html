@@ -1,0 +1,11 @@
+{% for item in items%}
+<li id={{item.followedid}}>
+<a class="delete deletefollowedid" title="删除跟随" href="javascript:void(0)"
+data-followedid={{item.followedid}}><img src="/images/delete.png"/></a>
+<div style="margin:10px 0px ;">
+<a class="photo" style="{{item.url}};" href="/profile/{{item.userid}}" ></a>
+<div>
+<a style="margin:3px 0px;" href="/profile/{{item.userid}}">{{item.username}}</a>
+</div>
+</li>
+{%endfor%}

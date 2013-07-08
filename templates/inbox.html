@@ -1,0 +1,229 @@
+{% extends "base.html" %}
+{% block link %}
+    <link rel="stylesheet" type="text/css" href="/css/mypage.css" />
+    <link rel="stylesheet" type="text/css" href="/css/text.css" />
+    <link rel="stylesheet" type="text/css" href="/css/uploadify.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/inbox.css"/>
+<script type="text/javascript" src="/js/jquery.uploadify.js"></script>
+
+    <script type="text/javascript">
+
+    
+
+
+           <script type="text/javascript">
+    $(function(){
+                     
+        $("#text").click(function(){
+        $("#musicform").slideUp(1);
+        $("#videoform").slideUp(1);
+        $("#pictureform").slideUp(1);
+
+        $("#textform").slideToggle();
+        });
+        $("#music").click(function(){
+        
+        $("#pictureform").slideUp(1);
+        $("#textform").slideUp(1);
+        $("#videoform").slideUp(1);
+        $("#musicform").slideToggle("slow");
+        });
+        $("#video").click(function(){
+        $("#textform").slideUp(1);
+        $("#musicform").slideUp(1);
+        $("#pictureform").slideUp(1);
+        $("#videoform").slideToggle("slow");
+        });
+         $("#picture").click(function(){
+        
+        $("#textform").slideUp(1);
+        $("#musicform").slideUp(1);
+        $("#videoform").slideUp(1);
+        $("#pictureform").slideToggle("slow");
+        });
+        
+    });
+    </script>
+    <script type="text/javascript">
+    $(function(){
+    
+    $(".review_submit").live('click',function(){
+        myid=$(this).data('myid');
+     postid=$(this).data('reviewid');
+
+     review_content=$('#review_box_'+postid).val();
+                 $.ajax({type:"POST",
+                  url:'/addreview/',
+                  dataType:"json",
+                  data:{'myid':myid,'postid':postid,'review_content':review_content},
+                  success:function(data)
+                  {
+                       $('#notes_'+postid).prepend(data.html);
+                      
+                   },
+                  contentType : 'application/json',
+               });
+
+    
+    });
+
+    });
+    </script>
+       <script type="text/javascript">
+        $(function(){
+
+        
+         $("a[title='评论']").live('click',function(){
+            
+             reviewer_id=$(this).data("reviewid");
+              $('#'+'note_container_'+reviewer_id).slideToggle();
+             $.get('/review/',{'review_count':$(this).text(),},function(data){
+            $('#'+'notes_'+ reviewer_id).empty();
+             $('#'+'notes_'+ reviewer_id).append(data);});
+         }
+         );
+ 
+        });
+    </script>
+<script type="text/javascript">
+    $(function(){
+        $('#btntext').live('click',function(){
+            var texttitle=$('#textitle').val();
+            var textcontents=$('#textcontents').val();
+            var texttags=$('#texttags').val();
+            var texturl=$('#texturl').val();
+            $.ajax({
+                type:'POST',
+                url:"/addtext/",
+                dataType:"json",
+                data:{'texttitle':texttitle,'textcontents':textcontents,'texttags':texttags,'texturl':texturl},
+                success:function(data){                	
+                	$('#posts').prepend(data.html)
+                },
+                contentType : 'application/json',
+            });
+        $("#textform").slideUp();
+        })
+       
+    });
+
+
+</script>
+<script type="text/javascript">
+    $(function(){
+        $('#btnreview').live('click',function(){
+            
+
+            $.ajax({
+                type:'POST',
+                url:"/getreview/",
+                dataType:"json",
+                data:{
+               },
+                success:function(data){ 
+                      $('#inbox').empty()         	
+                	$('#inbox').append(data.html)
+                },
+                contentType : 'application/json',
+            });
+
+        });
+       
+    });
+
+
+</script>
+<script type="text/javascript">
+    $(function(){
+        $('#btnmessage').live('click',function(){
+            
+
+            $.ajax({
+                type:'POST',
+                url:"/getgoodmessage/",
+                dataType:"json",
+                data:{
+               },
+                success:function(data){ 
+                      $('#inbox').empty()         	
+                	$('#inbox').append(data.html)
+                },
+                contentType : 'application/json',
+            });
+
+        });
+       
+    });
+
+
+</script>
+{% endblock %}
+{% block body%}
+<div id="nav">
+
+</div>
+<div id="container">
+
+
+
+<div id="header">
+<h1 id="logo">
+<a href="/"></a>
+</h1>
+<div id="home_tools">
+       <div class="search_form_row">
+         <form id="search_form"  action="/search" method="get">
+
+         <input  type="text" placeholder="搜索标签"></input>
+   
+         
+         </form>
+      <button id="search" class="search_icon" type="submit"></tutton>
+        </div>
+<a class="button" style="background-image:url(/images/home_button.png);"
+href="/homepage/" title="主页"></a>
+<a class="button" style="background-image:url(/images/inbox_button.png);"
+href="/inbox/" title="消息"></a>
+<a class="button" style="background-image:url(/images/goods_button.png);"
+href="/goods/" title="物品"></a>
+<a class="button" style="background-image:url(/images/settings_button.png);"
+href="/settings/" title="设置"></a>
+<a class="button" style="background-image:url(/images/logout_button.png);
+"href="/cancel/" title="注销"></a>
+
+</div>
+</div>
+<div id="content">
+<div id="right_column">
+<div id="relationship">
+<div class="post_controls"><a href="javascript:void(0)" id="btnreview">关于评论</a><span class="count">{{reviewcount}}</span></div>
+<div class="followers_controls"><a href="javascript:void(0)" id="btnmessage">关于物品</a><span class="count">{{goodscount}}</span></div>
+<div class="followers_controls"><a href="/getreply/" id="btnreply">关于回复</a><span class="count">{{replycount}}</span></div>
+</div>
+</div>
+<div id="left_column">
+
+<div id="pictureform" class="texts" style="display:none;">
+  <form enctpye="multipart/form-data">
+  <input id="picturetitle"type="text" placeholder="标题" ></input>
+  <textarea id="picturecontents"wrap="physical" placeholder="描述"></textarea>
+  <input id="picturetags"type="text" placeholder="标签#分隔开" ></input>
+  <input id="pictureurl"type="text"style="background-color:#FFFFFF" placeholder="URL:www." ></input>
+  
+  <input id="picturefile"type="file" name="picturefile">
+  <button id="btnpicture"class="send_submit">发送</button>
+  
+  </form>
+<span class="arrow_top" style="top:-11px;left:290px;"></span>
+</div>
+<ol id="inbox">
+
+
+
+</ol>
+
+</div>
+</div>
+
+</div>
+{% endblock %}

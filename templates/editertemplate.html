@@ -1,0 +1,57 @@
+{%for item in items%}
+<li   class="post" id={{item.twitter_id}}>
+<div  class="media" >
+<div class="post_info">
+<a class="usr_info"href="/profile/{{item.userid}}" title={{item.usrname}} >{{item.usrname}}</a>
+
+<div class="post_panel">
+<a class="post_icon" style="background-image:url(/images/delete.png);"
+title="删除" data-twitter_id={{item.twitter_id}}></a>
+
+<a class="post_icon"   style="background-image:url(/images/arg.png);margin-left:80px; " 
+ title="评论" data-reviewid={{item.twitter_id}}>{{item.review_count}}</a>
+</div>
+
+</div>
+<div class="music photo text video">
+<h2>标题：{{item.title}}</h2>
+{% if item.pictureurl %}
+<div class='photos'>
+<a style="display: inline-block;" href="/profile/{{item.id}}">
+<img class="Thumbnail" alt="" src={{item.pictureurl}}  onload='resizeImage(this,470,1000)'></img>
+</a>
+</div>
+{% endif %}
+{% if item.flashurl %}
+<div class='flash'>
+<embed src={{item.flashurl}} quality="high" width="480" height="334" align="middle"  allowScriptAccess="sameDomain" allowfullscreen="true" type="application/x-shockwave-flash"></embed>
+</div>
+{% endif %}
+{{item.content}}
+</div>
+{%if item.outurl %}
+链接：<a style="color:blue;" href="http://{{item.outurl}}" target="_blank">{{item.outurl}}</a>
+{% endif %}
+<div class="tags" style="word-wrap: break-word;">
+<table>
+<tr>
+<th>标签：</th>
+{%for tag in item.tags%}
+<td ><a style="color:blue;" class="search_tags">{{tag}}</a>##</td>
+{%endfor%}
+</tr>
+</table>
+</div>
+
+
+ <div id={{item.note_container_id}} class="notes_container" style="display:none;">
+ <ol id={{item.notes_id}}  class="notes" style="display:block;">
+
+  </ol>
+ </div>
+</div>
+<span class="arrow"></span>
+<div class="avatar_x"><a class="post_avatar"style={{item.url}}
+ href="/profile/{{item.id}}" title={{item.usrname}} ></a></div>
+</li>
+{%endfor%}

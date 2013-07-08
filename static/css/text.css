@@ -1,0 +1,148 @@
+ .close {
+cursor:pointer;
+right:1px;
+width: 80px;
+margin: 5px 0px 0px;
+margin-left:40px;
+font-size: 16px;
+display: inline-block;
+border-radius: 6px 6px 6px 6px;
+    border:0px;
+    background-color: #EBEBEB;
+    font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+    display:inline-block;
+    clear:both;
+    float: none;
+height: 40px;
+line-height: 34px;
+padding: 0px;
+font-weight: bold;
+border-color: rgba(0, 0, 0, 0.65);
+background:  rgb(87, 145, 187) ; 
+font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+color: rgb(255, 255, 255);
+text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.32);
+border-width: 1px;
+text-decoration: none;
+box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.6) inset;
+}
+.texts{
+
+}
+.texts input, .texts select {
+    width: 100%;
+  	background-color: #EBEBEB;
+    border-radius: 3px 3px 3px 3px;
+    font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+    border-width: 1px;
+    border-style: solid;
+    text-decoration: none;
+    border: 1px solid rgb(221, 225, 228);
+    color: #000000;
+    
+    padding: 11px 0px 10px;
+    display: block;
+    margin: 0px;
+    border: 1px 1px;
+    font: bold 14px/1.4 "Helvetica Neue","HelveticaNeue",Helvetica,Arial,sans-serif;
+
+}
+.texts textarea{
+    border: 1px solid rgb(221, 225, 228);
+
+	width:100%;
+	height:100px;
+
+}
+.send_submit{
+cursor:pointer;
+right:1px;
+width: 80px;
+margin: 5px 0px 0px;
+margin-left:420px;
+font-size: 16px;
+display: inline-block;
+border-radius: 6px 6px 6px 6px;
+float: none;
+height: 40px;
+line-height: 34px;
+padding: 0px;
+font-weight: bold;
+border-color: rgba(0, 0, 0, 0.65);
+background:  rgb(87, 145, 187) ; 
+font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+color: rgb(255, 255, 255);
+text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.32);
+border-width: 1px;
+text-decoration: none;
+box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.6) inset;
+
+}
+.input-file {
+cursor:pointer;
+display:inline-block;
+width:100px;
+height:30px;
+line-height:30px;
+background:#ddd;
+text-align:center;
+overflow:hidden;
+position:relative;
+  	background-color: #EBEBEB;
+    border-radius: 3px 3px 3px 3px;
+    font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+    border-width: 1px;
+    border-style: solid;
+}
+.input-file:hover {
+background:#ccc;
+}
+.input-file input {
+opacity:0;
+filter:alpha(opacity=0);
+font-size:100px;
+position:absolute;
+top:0;
+right:0;
+}
+#home_tools .search_form_row{
+	    float:right;
+     width:230px;
+    margin: 5px 0px 0px;
+
+
+}
+
+#home_tools .search_form_row input{
+    height: 28px;
+    width: 160px;
+    background-color: rgba(0, 0, 0, 0.1);
+   border-style:solid;
+   border:1px;
+    color:#FFFFFF;
+    font-family: "Helvetica Neue","HelveticaNeue",Helvetica,Arial,sans-serif;
+    font-size: 13px;
+    margin-right:30px;
+     border-radius: 0px 28px 28px 0px;
+}
+
+#home_tools .search_form_row .search_icon{
+     border-style:solid;
+     border:1px;
+    float:left;
+    cursor:pointer;
+	background:no-repeat;
+	background-image:url(/images/search_button.png);
+	background-position:center;
+    background-color: rgba(0, 0, 0, 0.1);
+
+	
+      display:block;
+      border-radius: 28px 0px 0px 28px;
+
+      width:28px;
+      height: 28px;
+      position:relative;
+
+}
+.search_icon:hover{opacity:0.5;}

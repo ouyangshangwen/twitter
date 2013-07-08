@@ -1,0 +1,41 @@
+#inbox {
+    list-style-type: none;
+    margin: 0px 0px 0px 85px;
+    padding: 0px;
+}
+#inbox .post {
+    clear: both;
+    position: relative;
+    margin: 20px 0px 0px;
+    width: 500px;
+    padding: 15px 20px;
+
+    background-color: rgb(255, 255, 255);
+    border-bottom: 2px solid rgb(187, 187, 187);
+    word-wrap: break-word;
+    border-radius: 6px 6px 6px 6px;
+}
+.btnreply {
+    position: relative;
+    right: 1px;
+    width: 50px;
+    margin: 12px 0px 0px 20px;
+    font-size: 16px;
+    border-radius: 6px 6px 6px 6px;
+    display: block;
+    height: 40px;
+    line-height: 34px;
+    padding: 0px;
+    font-weight: bold;
+    border-color: rgba(0, 0, 0, 0.65);
+    background: none repeat scroll 0% 0% rgb(87, 145, 187);
+    cursor: pointer;
+    font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+    color: rgb(255, 255, 255);
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.32);
+    border-width: 1px;
+    border-style: solid;
+    text-decoration: none;
+    box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.6) inset;
+    float: right;
+}

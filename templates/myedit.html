@@ -1,0 +1,247 @@
+{% extends "base.html" %}
+{% block link %}
+    <link rel="stylesheet" type="text/css" href="/css/mypage.css" />
+    <link rel="stylesheet" type="text/css" href="/css/text.css" />
+    <link rel="stylesheet" type="text/css" href="/css/myedit.css" />
+    <script type="text/javascript">
+        $(function(){
+  
+                  
+                  $.ajax({type:"POST",
+                  url:'/addpost/',
+                  dataType:"json",
+                  success:function(data)
+                  {
+
+                   $("#posts").append(data.html);
+
+                  
+                  },
+                  contentType : 'application/json',
+               });
+          
+        });
+    </script>
+           <script type="text/javascript">
+    $(function(){
+                     
+        $("#text").click(function(){
+        $("#musicform").slideUp(1);
+        $("#videoform").slideUp(1);
+        $("#pictureform").slideUp(1);
+
+        $("#textform").slideToggle();
+        });
+        $("#music").click(function(){
+        
+        $("#pictureform").slideUp(1);
+        $("#textform").slideUp(1);
+        $("#videoform").slideUp(1);
+        $("#musicform").slideToggle("slow");
+        });
+        $("#video").click(function(){
+        $("#textform").slideUp(1);
+        $("#musicform").slideUp(1);
+        $("#pictureform").slideUp(1);
+        $("#videoform").slideToggle("slow");
+        });
+         $("#picture").click(function(){
+        
+        $("#textform").slideUp(1);
+        $("#musicform").slideUp(1);
+        $("#videoform").slideUp(1);
+        $("#pictureform").slideToggle("slow");
+        });
+        
+    });
+    </script>
+    <script type="text/javascript">
+    $(function(){
+    
+    $(".review_submit").live('click',function(){
+        myid=$(this).data('myid');
+     postid=$(this).data('reviewid');
+
+     review_content=$('#review_box_'+postid).val();
+                 $.ajax({type:"POST",
+                  url:'/addreview/',
+                  dataType:"json",
+                  data:{'myid':myid,'postid':postid,'review_content':review_content},
+                  success:function(data)
+                  {
+                       $('#notes_'+postid).prepend(data.html);
+                      
+                   },
+                  contentType : 'application/json',
+               });
+
+    
+    });
+
+    });
+    </script>
+    <script type="text/javascript">
+    $(function(){
+
+          $("a[title='删除']").live('click',function(){
+            
+             twitter_id=$(this).data("twitter_id");
+
+             $.ajax({
+             type:'POST',
+             url:'/deletetwitter/',
+             dataType:"json",
+             data:{'twitter_id':twitter_id},
+             success:function(data)
+             {
+				$('#'+twitter_id).hide();
+             },
+             contentType : 'application/json',
+         });
+         });
+    });
+    
+     </script>
+       <script type="text/javascript">
+        $(function(){
+
+		$("a[title='喜欢']").live('click',function(){
+			id=$(this).data("reviewid");
+			
+			 $.ajax({
+             type:'POST',
+             url:'/like/',
+             dataType:"json",
+             data:{'twitterid':id},
+             success:function(data)
+             {
+				$('#like_id_'+id).attr("style","background-image:url(/images/redlike.png)");	
+             },
+             contentType : 'application/json',
+         });
+		});
+        
+         $("a[title='评论']").live('click',function(){
+            
+             reviewer_id=$(this).data("reviewid");
+              $('#'+'note_container_'+reviewer_id).slideToggle();
+             $.ajax({
+             type:'POST',
+             url:'/review/',
+             dataType:"json",
+             data:{'twitter_id':reviewer_id},
+             success:function(data)
+             {
+            $('#'+'notes_'+ reviewer_id).empty();
+             $('#'+'notes_'+ reviewer_id).append(data.html);
+             },
+             contentType : 'application/json',
+         });
+         });
+ 
+        });
+    </script>
+<script type="text/javascript">
+    $(function(){
+        $('#btnsearch').live('click',function(){
+            var tag=$('#searchtwitter').val()
+
+            $.ajax({
+                type:'POST',
+                url:"/searchtwitter/",
+                dataType:"json",
+                data:{'searchtwitter':tag},
+                success:function(data){ 
+                	$('#posts').empty()               	
+                	$('#posts').append(data.html)
+                },
+                contentType : 'application/json',
+            });
+        $("#textform").slideUp();
+        })
+       
+    });
+
+
+</script> 
+<script type="text/javascript">
+    $(function(){
+        $('.search_tags').live('click',function(){
+            var tag=$(this).text()
+           
+
+            $.ajax({
+                type:'POST',
+                url:"/searchtwitter/",
+                dataType:"json",
+                data:{'searchtwitter':tag},
+                success:function(data){ 
+                	$('#posts').empty()               	
+                	$('#posts').append(data.html)
+                },
+                contentType : 'application/json',
+            });
+        $("#textform").slideUp();
+        })
+       
+    });
+
+
+</script>
+{% endblock %}
+{% block body%}
+<div id="nav">
+
+</div>
+<div id="container">
+
+
+
+<div id="header">
+<h1 id="logo">
+<a href="/"></a>
+</h1>
+<div id="home_tools">
+       <div class="search_form_row">
+         <form id="search_form"  action="/search" method="get">
+
+         <input  id="searchtwitter"type="text" placeholder="搜索标签"></input>
+   
+         
+         </form>
+      <button id="btnsearch" class="search_icon" type="submit"></tutton>
+        </div>
+<a class="button" style="background-image:url(/images/home_button.png);"
+href="/homepage/" title="主页"></a>
+<a class="button" style="background-image:url(/images/inbox_button.png);"
+href="/inbox/" title="消息"></a>
+<a class="button" style="background-image:url(/images/goods_button.png);"
+href="/goods/" title="物品"></a>
+<a class="button" style="background-image:url(/images/settings_button.png);"
+href="/settings/" title="设置"></a>
+<a class="button" style="background-image:url(/images/logout_button.png);
+"href="/canceled/" title="注销"></a>
+
+</div>
+</div>
+<div id="content">
+<div id="right_column">
+<div id="relationship">
+<div class="post_controls"><a  href="/friends/{{user.id}}">关注者</a><span class="count">{{followers}}</span></div>
+<div class="followers_controls"><a href="/friended/{{user.id}}">跟随者</a><span class="count">{{followered}}</span></div>
+</div>
+</div>
+<div id="left_column">
+
+
+<ol id="posts">
+
+
+
+</ol>
+
+</div>
+</div>
+
+</div>
+{% endblock %}

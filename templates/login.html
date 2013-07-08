@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block link %}
+    <link rel="stylesheet" type="text/css" href="/css/login_or_signup.css" />
+{% endblock %}
+{% block body%}
+<div id="nav">
+
+</div>
+<div  class="signup_forms" >
+
+   <form action="/login/dologin/" method="post">
+
+    <input type="email" placeholder="邮箱" name="email"></input>
+
+    <input type="password" placeholder="密码" name="password"></input>
+    
+    <button class="login_forms_submit" type='submit'><span class="login_btn">登录</span></button>
+ 
+    </form>
+    
+    <a class="login_forms_submit"style='display:block;'href="/signup/"><span class="login_btn"style="margin-left:105px;">注册</span></a>
+    <a class="forgot_password" href="/login/findpassword/">找回密码</a></div>
+
+</div>
+{% endblock %}

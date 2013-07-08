@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block link %}
+    <link rel="stylesheet" type="text/css" href="/css/mypage.css" />
+    <link rel="stylesheet" type="text/css" href="/css/text.css" />
+
+{% endblock %}
+{% block body%}
+<div id="nav">
+
+</div>
+<div id="container">
+
+<div id="header">
+<h1 id="logo">
+<a href="/"></a>
+</h1>
+ <div id="home_tools">
+
+
+    <a class="button" style="background-image:url(/images/home_button.png);"
+   href="/" title="主页"></a>
+   <a class="button" style="background-image:url(/images/inbox_button.png);"
+ href="/" title="消息"></a>
+  <a class="button" style="background-image:url(/images/goods_button.png);"
+href="/" title="物品"></a>
+  <a class="button" style="background-image:url(/images/settings_button.png);"
+href="/" title="设置"></a>
+  <a class="button" style="background-image:url(/images/logout_button.png);
+"href="/" title="注销"></a>
+
+  </div>
+</div>
+<div id="content">
+<div id="right_column">
+  <div id="relationship">
+      <div class="post_controls"><a href="/">关注者</a><span class="count">x</span></div>
+      <div class="followers_controls"><a href="/">跟随者</a><span class="count">yyyy</span></div>
+  </div>
+</div>
+<div id="left_column">
+<div class="myself">
+
+<a  class="label_button" style="background-image:url(/images/text_button48.png);
+"href="/" title="文字"></a>
+<a class="label_button" style="background-image:url(/images/music_button48.png);"
+href="/" title="音乐"></a>
+<a class="label_button" style="background-image:url(/images/video_button48.png);"
+href="/" title="视频"></a>
+<a class="label_button" style="background-image:url(/images/picture_button48.png);
+"href="/" title="图片"></a>
+<span class="arrow"></span>
+<div class="avatar_x"> 
+<a class="post_avatar"style="background-image:url(/images/hello.png)" title="hello" href="/"></a>
+</div>
+</div>
+<div class="texts">
+  <form enctpye="multipart/form-data">
+  <input type="text" placeholder="标题" ></input>
+  <textarea wrap="physical" placeholder="描述"></textarea>
+  <input type="text" placeholder="标签#分隔开" ></input>
+  <input type="text"style="background-color:#FFFFFF" placeholder="URL:www." ></input>
+  <span class="input-file ">上传文件<input type="file"></span>
+  <button class="login_forms_submit"><span class="login_btn">发送</span></button>
+  
+  </form>
+<span class="arrow_top" style="top:-11px;left:130px;"></span>
+</div>
+</div>
+</div>
+
+
+
+
+</div>
+{% endblock %}
